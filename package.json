@@ -1,0 +1,13 @@
+{
+  "name": "connect404-realtime_chat_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:frontend": "cd client && npm run dev",
+    "dev:backend": "cd server && npm run dev"
+  },
+  "keywords": [],
+  "author": "Nikhil",
+  "license": "ISC"
+}
