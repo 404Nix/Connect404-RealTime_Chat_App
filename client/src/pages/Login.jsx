@@ -1,14 +1,4 @@
 import React, { useState } from "react";
-import {
-    Avatar,
-    Button,
-    Container,
-    IconButton,
-    Paper,
-    Stack,
-    TextField,
-    Typography,
-} from "@mui/material";
 import { CameraAlt as CameraAltIcon } from "@mui/icons-material";
 import { VisuallyHidden } from "../components/styles/StyledComponents";
 
@@ -16,186 +6,113 @@ const Login = () => {
     const [isLogin, setIsLogin] = useState(true);
     const toggleLogin = () => setIsLogin((prev) => !prev);
 
-    // Add form validation and submission logic here
-
     return (
-        <Container
-            component="main"
-            maxWidth="xs"
-            sx={{
-                minHeight: "100dvh",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                py: 3,
-            }}
-        >
-            <Paper
-                elevation={3}
-                sx={{
-                    width: "100%",
-                    padding: { xs: 3, sm: 4 },
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    borderRadius: 2,
-                }}
-            >
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 py-6 px-4">
+            <div className="w-full max-w-sm bg-white rounded-2xl shadow-lg p-8">
                 {isLogin ? (
                     <>
-                        <Typography
-                            variant="h5"
-                            align="center"
-                            fontWeight={600}
-                        >
+                        <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
                             Login
-                        </Typography>
-                        <form style={{ width: "100%", marginTop: "1rem" }}>
-                            <TextField
+                        </h2>
+                        <form className="flex flex-col gap-4">
+                            <input
                                 required
-                                fullWidth
-                                label="Username"
-                                margin="normal"
-                                variant="outlined"
+                                type="text"
+                                placeholder="Username"
+                                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                             />
-                            <TextField
+                            <input
                                 required
-                                fullWidth
-                                label="Password"
-                                margin="normal"
-                                variant="outlined"
                                 type="password"
+                                placeholder="Password"
+                                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                             />
-                            <Button
-                                sx={{ marginTop: "1rem" }}
-                                fullWidth
-                                variant="contained"
-                                color="primary"
+                            <button
                                 type="submit"
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition mt-1 cursor-pointer"
                             >
                                 Login
-                            </Button>
-                            <Typography
-                                variant="body1"
-                                color="text.secondary"
-                                align="center"
-                                sx={{ my: 1 }}
-                            >
+                            </button>
+                            <p className="text-center text-sm text-gray-400">
                                 OR
-                            </Typography>
-                            <Button
-                                onClick={toggleLogin}
-                                color="secondary"
-                                variant="text"
-                                fullWidth
+                            </p>
+                            <button
                                 type="button"
+                                onClick={toggleLogin}
+                                className="w-full text-sm text-purple-600 hover:text-purple-800 transition cursor-pointer"
                             >
                                 Don't have an account? Register
-                            </Button>
+                            </button>
                         </form>
                     </>
                 ) : (
                     <>
-                        <Typography
-                            variant="h5"
-                            align="center"
-                            fontWeight={600}
-                        >
+                        <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
                             Register
-                        </Typography>
-                        <form style={{ width: "100%", marginTop: "1rem" }}>
-                            <Stack
-                                sx={{
-                                    position: "relative",
-                                    width: "7rem",
-                                    height: "7rem",
-                                    margin: "auto",
-                                    marginBottom: "1rem",
-                                }}
-                            >
-                                <Avatar
-                                    sx={{ width: "100%", height: "100%" }}
-                                />
-                                <IconButton
-                                    sx={{
-                                        position: "absolute",
-                                        bottom: 0,
-                                        right: 0,
-                                        backgroundColor: "rgba(0,0,0,0.6)",
-                                        color: "white",
-                                        "&:hover": {
-                                            backgroundColor: "rgba(0,0,0,0.8)",
-                                        },
-                                    }}
-                                    component="label"
-                                >
-                                    <CameraAltIcon />
-                                    <VisuallyHidden
-                                        type="file"
-                                        accept="image/*"
+                        </h2>
+                        <form className="flex flex-col gap-3">
+                            <div className="relative w-28 h-28 mx-auto mb-2">
+                                <div className="w-full h-full rounded-full bg-gray-200 overflow-hidden">
+                                    {/* dummy image */}
+                                    <img
+                                        src="https://images.pexels.com/photos/37149787/pexels-photo-37149787.jpeg"
+                                        alt="Profile"
+                                        className="w-full h-full object-cover"
                                     />
-                                </IconButton>
-                            </Stack>
-                            <TextField
+                                </div>
+                                <label className="absolute bottom-0 right-0 bg-black/60 hover:bg-black/80 text-white rounded-full p-1.5 cursor-pointer transition">
+                                    <CameraAltIcon
+                                        style={{ fontSize: "1.1rem" }}
+                                    />
+                                    <VisuallyHidden type="file" />
+                                </label>
+                            </div>
+
+                            <input
                                 required
-                                fullWidth
-                                label="Name"
-                                margin="dense"
-                                variant="outlined"
+                                type="text"
+                                placeholder="Name"
+                                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                             />
-                            <TextField
+                            <input
                                 required
-                                fullWidth
-                                label="Username"
-                                margin="dense"
-                                variant="outlined"
+                                type="text"
+                                placeholder="Username"
+                                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                             />
-                            <TextField
+                            <input
                                 required
-                                fullWidth
-                                label="Bio"
-                                margin="dense"
-                                variant="outlined"
+                                type="text"
+                                placeholder="Bio"
+                                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                             />
-                            <TextField
+                            <input
                                 required
-                                fullWidth
-                                label="Password"
-                                margin="dense"
-                                variant="outlined"
                                 type="password"
+                                placeholder="Password"
+                                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                             />
-                            <Button
-                                sx={{ marginTop: "1rem" }}
-                                fullWidth
-                                variant="contained"
-                                color="primary"
+                            <button
                                 type="submit"
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition mt-1 cursor-pointer"
                             >
                                 Register
-                            </Button>
-                            <Typography
-                                variant="body1"
-                                color="text.secondary"
-                                align="center"
-                                sx={{ my: 1 }}
-                            >
+                            </button>
+                            <p className="text-center text-sm text-gray-400">
                                 OR
-                            </Typography>
-                            <Button
-                                onClick={toggleLogin}
-                                color="secondary"
-                                variant="text"
-                                fullWidth
+                            </p>
+                            <button
                                 type="button"
+                                onClick={toggleLogin}
+                                className="w-full text-sm text-purple-600 hover:text-purple-800 transition cursor-pointer"
                             >
                                 Already have an account? Login
-                            </Button>
+                            </button>
                         </form>
                     </>
                 )}
-            </Paper>
-        </Container>
+            </div>
+        </div>
     );
 };
 
