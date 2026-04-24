@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { CameraAlt as CameraAltIcon } from "@mui/icons-material";
+import { CameraAlt as CameraAltIcon, AccountCircle as AccountCircleIcon } from "@mui/icons-material";
 import { VisuallyHidden } from "../components/styles/StyledComponents";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginValidator, registerValidator } from "../utils/validators";
+import Title from "../components/layouts/Title";
 
 const Login = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -12,14 +13,26 @@ const Login = () => {
         reset();
     };
 
+    const [avatarPreview, setAvatarPreview] = useState("");
+
     const {
         register,
         handleSubmit,
         reset,
+        setValue,
         formState: { errors, isSubmitting },
     } = useForm({
         resolver: zodResolver(isLogin ? loginValidator : registerValidator),
     });
+
+    const avatarHandler = (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            setValue("avatar", e.target.files);
+            setAvatarPreview(URL.createObjectURL(file));
+        }
+    };
 
     const formSubmitHandler = async (data) => {
         if (isLogin) {
@@ -40,6 +53,7 @@ const Login = () => {
             <div className="w-full max-w-sm bg-white rounded-2xl shadow-lg p-8">
                 {isLogin ? (
                     <>
+                        <Title title="Connect404 - login" />
                         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
                             Login
                         </h2>
@@ -114,6 +128,7 @@ const Login = () => {
                     </>
                 ) : (
                     <>
+                        <Title title="Connect404 - Register" />
                         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
                             Register
                         </h2>
@@ -123,18 +138,25 @@ const Login = () => {
                         >
                             <div className="relative w-28 h-28 mx-auto mb-2">
                                 <div className="w-full h-full rounded-full bg-gray-200 overflow-hidden">
-                                    {/* dummy image */}
-                                    <img
-                                        src="https://images.pexels.com/photos/37149787/pexels-photo-37149787.jpeg"
-                                        alt="Profile"
-                                        className="w-full h-full object-cover"
-                                    />
+                                    {avatarPreview ? (
+                                        <img
+                                            src={avatarPreview}
+                                            alt="Profile"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    ) : (
+                                        <AccountCircleIcon sx={{ width: "100%", height: "100%", color: "#9ca3af" }} />
+                                    )}
                                 </div>
                                 <label className="absolute bottom-0 right-0 bg-black/60 hover:bg-black/80 text-white rounded-full p-1.5 cursor-pointer transition">
                                     <CameraAltIcon
                                         style={{ fontSize: "1.1rem" }}
                                     />
-                                    <VisuallyHidden type="file" />
+                                    <VisuallyHidden
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={avatarHandler}
+                                    />
                                 </label>
                             </div>
 
