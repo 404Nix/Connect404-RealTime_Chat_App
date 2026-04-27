@@ -1,18 +1,29 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, Outlet, useParams } from "react-router-dom";
 import Title from "./Title";
-import Navbar from "./Navbar";
+import Navbar from "./Header";
 
 const HomeChatLayout = () => {
+    const { id } = useParams();
+
     return (
         <>
-        <Navbar />
-            <div className="grid grid-cols-12 h-screen">
-                <aside className="col-span-4">
-                    {/* left sidebar — 3/12 = 25% */}
+            <Navbar />
+            <div className="grid grid-cols-1 md:grid-cols-12 h-screen">
+                <aside
+                    className={`md:block md:col-span-4 md:h-screen bg-blue-500 ${id ? "hidden" : "block"}`}
+                >
+                    {/* when user clicks a contact */}
+                    <Link to="/chat/123">UserList</Link>
                 </aside>
-                <main className="col-span-8 shadow-2xl">
-            <       Outlet />
+                <main
+                    className={`md:block md:col-span-8 shadow-2xl ${id ? "block" : "hidden"}`}
+                >
+                    {/* back button — mobile only */}
+                    <Link to="/" className="md:hidden">
+                        ← Back
+                    </Link>
+                    <Outlet />
                 </main>
             </div>
         </>
