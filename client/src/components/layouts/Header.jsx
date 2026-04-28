@@ -10,7 +10,7 @@ import { Tooltip } from "react-tooltip";
 import ProfileDialog from "./ProfileDialog";
 import AddGroupDialog from "./AddGroupDialog";
 
-const Header = ({ user }) => {
+const Header = () => {
     const [profileActive, setProfileActive] = useState(false);
     const [addGroupOpen, setAddGroupOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
