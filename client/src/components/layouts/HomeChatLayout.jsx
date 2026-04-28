@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 import Title from "./Title";
-import Navbar from "./Header";
+
+import Header from "./Header";
 
 const HomeChatLayout = () => {
     const { id } = useParams();
 
     return (
         <>
-            <Navbar />
+            <Header />
             <div className="grid grid-cols-1 md:grid-cols-12 h-screen">
                 <aside
                     className={`md:block md:col-span-4 md:h-screen bg-blue-500 ${id ? "hidden" : "block"}`}
