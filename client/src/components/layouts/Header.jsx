@@ -5,11 +5,14 @@ import {
     Close as CloseIcon,
     Add as AddGroup,
     Group as GroupIcon,
+    Search as SearchIcon,
 } from "@mui/icons-material";
 import { Tooltip } from "react-tooltip";
-import ProfileDialog from "./ProfileDialog";
-import AddGroupDialog from "./AddGroupDialog";
+import ProfileDialog from "./dialog/ProfileDialog";
+import AddGroupDialog from "./dialog/AddGroupDialog";
 
+//dev
+const user = false;
 const Header = () => {
     const [profileActive, setProfileActive] = useState(false);
     const [addGroupOpen, setAddGroupOpen] = useState(false);
@@ -26,6 +29,10 @@ const Header = () => {
     const handleMobile = () => {
         setMenuOpen(!menuOpen);
     };
+
+    const searchHandler = () => {
+
+    }
 
     return (
         <nav className="flex items-center justify-between px-6 py-3 bg-gray-300 border-b border-gray-800">
@@ -56,7 +63,6 @@ const Header = () => {
                 >
                     <GroupIcon fontSize="small" />
                 </Link>
-
                 <Tooltip
                     anchorSelect="#Create_Group"
                     content="Create Group"
@@ -70,7 +76,6 @@ const Header = () => {
                         zIndex: 999,
                     }}
                 />
-
                 <button
                     id="Create_Group"
                     onClick={addGroupOpenHandler}
@@ -82,6 +87,19 @@ const Header = () => {
                 <AddGroupDialog
                     open={addGroupOpen}
                     onClose={addGroupOpenHandler}
+                />
+            </div>
+
+            {/* search */}
+            <div className="flex items-center gap-2 bg-gray-200 hover:bg-gray-100 border border-gray-400 rounded-full px-3 py-1.5 transition w-48 focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent">
+                <SearchIcon
+                    fontSize="small"
+                    className="text-gray-500 shrink-0"
+                />
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    className="bg-transparent text-sm text-gray-700 placeholder-gray-500 outline-none w-full"
                 />
             </div>
 
@@ -103,10 +121,7 @@ const Header = () => {
                         </div>
                     )}
                 </div>
-                <ProfileDialog
-                    open={profileActive}
-                    onClose={profileHandler}
-                />
+                <ProfileDialog open={profileActive} onClose={profileHandler} />
             </div>
         </nav>
     );

@@ -32,17 +32,17 @@ createRoot(document.getElementById("root")).render(
                         <Route
                             path="/login"
                             element={
-                                <ProtectedRoutes user={!user} redirect="/">
+                                //<ProtectedRoutes user={!user} redirect="/">
                                     <Login />
-                                </ProtectedRoutes>
+                                // </ProtectedRoutes>
                             }
                         />
                         <Route
                             path="/"
                             element={
-                                <ProtectedRoutes user={user}>
+                                // <ProtectedRoutes user={user}>
                                     <App />
-                                </ProtectedRoutes>
+                                // </ProtectedRoutes>
                             }
                         >
                             <Route element={<HomeChatLayout />}>
