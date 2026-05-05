@@ -3,6 +3,8 @@ import { Link, Outlet, useParams } from "react-router-dom";
 import Title from "./Title";
 
 import Header from "./Header";
+import ChatList from "./specific/ChatList";
+import { sampleChats } from "../../constant/sampleData";
 
 const HomeChatLayout = () => {
     const { id } = useParams();
@@ -15,7 +17,7 @@ const HomeChatLayout = () => {
                     className={`md:block md:col-span-4 md:h-screen bg-blue-500 ${id ? "hidden" : "block"}`}
                 >
                     {/* when user clicks a contact */}
-                    <Link to="/chat/123">UserList</Link>
+                    <ChatList chats={sampleChats} />
                 </aside>
                 <main
                     className={`md:block md:col-span-8 shadow-2xl ${id ? "block" : "hidden"}`}
