@@ -7,7 +7,7 @@ const ChatList = ({
     onlineUsers = [],
     newMessagesAlert = [
         {
-            chatId: "",
+            chatId: "123",
             count: 0,
         },
     ],
@@ -15,8 +15,31 @@ const ChatList = ({
 }) => {
     return (
         <div className="p-4 cursor-pointer">
-            {chats.map((chat) => {
-                return <ChatItem />;
+            {chats.map((chat, index) => {
+                const { id, name, avatar, groupChat, members } = chat;
+
+                const newMessagesCount = newMessagesAlert.find(
+                    ({ chatId }) => chatId === id,
+                );
+
+                const isOnline = members?.some((memberId) =>
+                    onlineUsers.includes(memberId),
+                );
+
+                return (
+                    <ChatItem
+                        newMessagesAlert={newMessagesCount}
+                        isOnline={isOnline}
+                        avatar={avatar}
+                        name={name}
+                        _id={id}
+                        key={id}
+                        index={index}
+                        groupChat={groupChat}
+                        samesender={chatId === id}
+                        handleDeleteChat={handleDeleteChat}
+                    />
+                );
             })}
         </div>
     );
