@@ -17,7 +17,7 @@ const HomeChatLayout = () => {
                     className={`md:block md:col-span-4 md:h-screen bg-blue-500 ${id ? "hidden" : "block"}`}
                 >
                     {/* when user clicks a contact */}
-                    <ChatList chats={sampleChats} />
+                    <ChatList chats={sampleChats} chatId={id}/>
                 </aside>
                 <main
                     className={`md:block md:col-span-8 shadow-2xl ${id ? "block" : "hidden"}`}

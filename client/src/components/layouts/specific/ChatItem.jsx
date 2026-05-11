@@ -15,11 +15,15 @@ const ChatItem = ({
   return (
     <Link to={`/chat/${_id}`} className={`flex items-center gap-4 p-3 rounded-lg hover:bg-gray-300 transition ${samesender ? "mt-2" : "mt-4"}`}>
       <div className="relative">
-        {/* <img src={avatar[0]} alt={name} className="w-12 h-12 rounded-full object-cover" /> */}
+        <img src={avatar[0]} alt={name} className="w-12 h-12 rounded-full object-cover" />
         {isOnline && (
           <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
         )}
       </div>
+        <div>
+          <h3 className="font-semibold">{name}</h3>
+          {groupChat && <span className="text-xs text-gray-500">Group Chat</span>}
+        </div>
     </Link>
   )
 }
